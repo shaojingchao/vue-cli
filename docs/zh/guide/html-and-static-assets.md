@@ -46,11 +46,11 @@
 module.exports = {
   chainWebpack: config => {
     // 移除 prefetch 插件
-    config.plugins.delete('prefetch')
+    config.plugins.delete('prefetch-index')
 
     // 或者
     // 修改它的选项：
-    config.plugin('prefetch').tap(options => {
+    config.plugin('prefetch-index').tap(options => {
       options[0].fileBlacklist = options[0].fileBlacklist || []
       options[0].fileBlacklist.push(/myasyncRoute(.)+?\.js$/)
       return options
@@ -82,9 +82,9 @@ module.exports = {
   filenameHashing: false,
   // 删除 HTML 相关的 webpack 插件
   chainWebpack: config => {
-    config.plugins.delete('html')
-    config.plugins.delete('preload')
-    config.plugins.delete('prefetch')
+    config.plugins.delete('html-index')
+    config.plugins.delete('preload-index')
+    config.plugins.delete('prefetch-index')
   }
 }
 ```
